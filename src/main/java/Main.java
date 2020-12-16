@@ -5,7 +5,8 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        try {
+        try {   // changed file
+
             Scanner input = new Scanner(System.in);
             String path;
             System.out.println("Введите путь к файлу: ");
