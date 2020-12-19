@@ -1,7 +1,13 @@
 package com.company;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Paths;
+import java.util.List;
 import java.util.Scanner;
+
+import static java.nio.charset.StandardCharsets.UTF_8;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -12,14 +18,14 @@ public class Main {
             System.out.println("Введите путь к файлу: ");
             path = input.nextLine();
 
-            FileInputStream fileInputStream = new FileInputStream(path);
-            int i;
-            while ((i = fileInputStream.read()) != -1) {
-                System.out.print((char) i);
+            List<String> lines = Files.readAllLines(Paths.get(path), UTF_8);
+            for (String s : lines) {
+                System.out.println(s);
             }
-
-        } catch (FileNotFoundException exception) {
+        }
+        catch (NoSuchFileException exception) {
             System.out.println("Файл не найден");
+
         }
     }
 }
